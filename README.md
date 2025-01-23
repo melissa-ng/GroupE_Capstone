@@ -85,7 +85,7 @@ dqa/
 ```  
 
 ## Authors  
-- **[Your Name]**  
+- Gary King  
 - [Name]  
 - [Name]  
 - Melissa Ng
