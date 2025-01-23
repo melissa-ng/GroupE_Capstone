@@ -42,12 +42,12 @@ All contributors must fulfill the following requirements before working with sen
    ```bash
    git clone https://github.com/melissa-ng/GroupE_Capstone/
 
-## Navigate to the Project Directory  
+2. Navigate to the Project Directory  
 ```bash
 cd dqa
 ```  
 
-## Install Dependencies  
+3. Install Dependencies  
 ```bash
 pip install -r requirements.txt
 ```  
