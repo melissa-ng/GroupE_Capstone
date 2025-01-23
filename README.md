@@ -85,7 +85,7 @@ dqa/
 - **[Your Name]**  
 - [Name]  
 - [Name]  
-- [Name]  
+- Melissa Ng
 
 ## Acknowledgments  
 This project builds on the work of the previous semester's group. Special thanks to Bryan Tran and his team for their foundational contributions: [https://github.com/bryanltran/dqa](https://github.com/bryanltran/dqa).  
