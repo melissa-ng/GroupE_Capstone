@@ -42,9 +42,6 @@ All contributors must fulfill the following requirements before working with sen
    ```bash
    git clone https://github.com/melissa-ng/GroupE_Capstone/
 
-Here’s your text formatted properly in Markdown:
-
-```markdown
 ## Navigate to the Project Directory  
 ```bash
 cd dqa
@@ -88,7 +85,7 @@ dqa/
 - **[Your Name]**  
 - [Name]  
 - [Name]  
-- [Name]  
+- Melissa Ng
 
 ## Acknowledgments  
 This project builds on the work of the previous semester's group. Special thanks to Bryan Tran and his team for their foundational contributions: [https://github.com/bryanltran/dqa](https://github.com/bryanltran/dqa).  
@@ -98,6 +95,5 @@ This repository is licensed under [insert license here]. See the LICENSE file fo
 
 ## Contact  
 For questions or contributions, please reach out to the team via GroupMe or email.  
-```
 
 This version will render cleanly as Markdown in your GitHub repository or any Markdown viewer. Let me know if you’d like further refinements!
