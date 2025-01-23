@@ -11,7 +11,10 @@ The ultimate goal is to ensure that critical information is correctly collected 
 - **Retrieval-Augmented Generation (RAG)**: To assist in the comparison process and improve accuracy in text analysis.  
 - **GitHub**: Version control and collaboration.  
 - **GroupMe**: Task management and communication.  
-- **CJIS Training Compliance**: Ensures secure handling of sensitive call data.  
+- **CJIS Training Compliance**: Ensures secure handling of sensitive call data.
+
+## Features
+- Text Transcript Parser
 
 ## Group Goals and Progress Plan  
 - **January–February**:  
