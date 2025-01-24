@@ -197,7 +197,7 @@ dqa/
 ## Authors  
 - Gary King  
 - [Name]  
-- [Name]  
+- Kaylee Ng
 - Melissa Ng
 
 ## Acknowledgments  
