@@ -14,7 +14,117 @@ The ultimate goal is to ensure that critical information is correctly collected 
 - **CJIS Training Compliance**: Ensures secure handling of sensitive call data.
 
 ## Features
-- Text Transcript Parser
+### Transcript Parsing Feature Documentation  
+
+---
+
+#### **Overview**  
+The transcript parsing feature processes raw emergency call transcripts into a structured format for further analysis. It extracts key information such as operator questions, caller responses, and timestamps, ensuring that the data is properly segmented and formatted for comparison against required emergency response protocols.  
+
+---
+
+#### **Features**  
+1. **Question and Response Extraction**  
+   - Separates operator questions and caller responses.  
+   - Handles various transcript formats, including noisy or incomplete data.  
+
+2. **Timestamp Handling**  
+   - Extracts timestamps associated with each conversation segment.  
+
+3. **Error Handling**  
+   - Gracefully processes transcripts with garbled or missing data.  
+   - Ensures incomplete transcripts do not cause crashes.  
+
+4. **Output Format**  
+   - Returns a structured dictionary containing the following keys:  
+     - `operator_questions`: List of questions asked by the operator.  
+     - `caller_responses`: List of responses provided by the caller.  
+     - `timestamps`: List of timestamps for each line of the transcript.  
+
+---
+
+#### **Input Format**  
+The parser expects raw text transcripts in the following format:  
+```plaintext
+[00:00:01] Operator: 911, what's your emergency?  
+[00:00:05] Caller: My friend is unconscious and not breathing.  
+[00:00:10] Operator: Can you tell me your location?  
+[00:00:15] Caller: 123 Main Street.  
+```  
+
+---
+
+#### **Output Format**  
+The parsed transcript is returned as a dictionary:  
+```python
+{
+    "operator_questions": [
+        "911, what's your emergency?",
+        "Can you tell me your location?"
+    ],
+    "caller_responses": [
+        "My friend is unconscious and not breathing.",
+        "123 Main Street."
+    ],
+    "timestamps": [
+        "00:00:01",
+        "00:00:05",
+        "00:00:10",
+        "00:00:15"
+    ]
+}
+```
+
+---
+
+#### **Usage**  
+1. **Import the Function**  
+   Ensure the `parse_transcript` function is imported from the corresponding module:  
+   ```python
+   from text_parsing_module import parse_transcript
+   ```
+
+2. **Call the Function**  
+   Pass a raw transcript string to the function:  
+   ```python
+   result = parse_transcript(raw_transcript)
+   ```
+
+3. **Handle the Output**  
+   Use the structured dictionary for downstream processing:  
+   ```python
+   print(result["operator_questions"])
+   ```
+
+---
+
+#### **Unit Testing**  
+To validate the parsing feature, run the unit tests:  
+1. Add the test file `test_transcript_parsing.py` to your project.  
+2. Run the tests using:  
+   ```bash
+   python -m unittest test_transcript_parsing.py
+   ```  
+3. Ensure all test cases pass:  
+   - Valid transcripts are parsed correctly.  
+   - Noisy and incomplete transcripts are handled gracefully.  
+   - The parsed output structure matches the expected schema.  
+
+---
+
+#### **Technologies and Tools**  
+- **Programming Language**: Python  
+- **Testing Framework**: `unittest`  
+
+---
+
+#### **Future Enhancements**  
+1. Support for multiple languages in transcripts.  
+2. Integration with speech-to-text pipelines for real-time transcript processing.  
+3. Advanced handling of noisy data using NLP techniques.  
+
+---
+
 
 ## Group Goals and Progress Plan  
 - **January–February**:  
