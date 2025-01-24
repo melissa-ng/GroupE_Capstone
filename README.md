@@ -10,7 +10,7 @@ The ultimate goal is to ensure that critical information is correctly collected 
 - **OpenAI API**: For vectorizing phrases from the dispatcher training flip book and comparing them with transcripts.  
 - **Retrieval-Augmented Generation (RAG)**: To assist in the comparison process and improve accuracy in text analysis.  
 - **GitHub**: Version control and collaboration.  
-- **GroupMe**: Task management and communication.  
+- **Discord**: Task management and communication.  
 - **CJIS Training Compliance**: Ensures secure handling of sensitive call data.
 
 ## Features
