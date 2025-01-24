@@ -195,11 +195,42 @@ dqa/
 ```  
 
 ## Authors  
-- Gary King  
-- Kaylee Nguyen
-- Karan Suresh Prajapati
-- Melissa Ng
-- Samuel Imose
+#### **Gary King: Project Manager**
+- Oversees the overall direction and progress of the project.
+- Ensures that the project stays on schedule and meets deadlines (e.g., Capstone Expo on May 2nd).
+- Coordinates communication between team members and external stakeholders.
+- Tracks the progress of tasks and ensures alignment with project objectives.
+- Facilitates decision-making for the team and resolves conflicts.
+- Manages documentation and reporting to advisors or faculty.
+
+#### **Kaylee Nguyen: Scrum Master 2**
+- Leads daily stand-ups and facilitates sprint planning for the team.
+- Ensures adherence to Agile principles and best practices.
+- Monitors progress on assigned tasks and provides assistance as needed.
+- Helps identify and remove blockers to keep the project moving forward.
+- Oversees the implementation of the vectorization and NLP components.
+- Reviews pull requests and ensures code quality for team collaboration.
+
+#### **Karan Suresh Prajapati: Scrum Master 3**
+- Focuses on coordinating with team members to complete key deliverables.
+- Manages task allocation and updates the task board to reflect team progress.
+- Provides guidance on integrating AI models with the project pipeline.
+- Assists in troubleshooting and debugging issues encountered during development.
+- Leads efforts on ensuring data privacy and compliance with the confidentiality agreement.
+
+#### **Melissa Ng: Scrum Master 4**
+- Oversees development and testing of transcript parsing and analysis features.
+- Ensures unit tests are written and validated for parsing and vectorization scripts.
+- Manages integration of OpenAI and RAG components into the workflow.
+- Documents technical processes for parsing, vectorization, and protocol adherence analysis.
+- Tracks the progress of GitHub branches, pull requests, and overall repository organization.
+
+#### **Samuel Imose: Scrum Master 1**
+- Facilitates retrospective meetings to evaluate sprint outcomes.
+- Collaborates with other Scrum Masters to create sprint goals and prioritize tasks.
+- Oversees the preparation and presentation for the Capstone Expo.
+- Leads efforts in ensuring code compliance with project requirements and standards.
+- Manages the creation and maintenance of testing frameworks for all components.
 
 ## Acknowledgments  
 This project builds on the work of the previous semester's group. Special thanks to Bryan Tran and his team for their foundational contributions: [https://github.com/bryanltran/dqa](https://github.com/bryanltran/dqa).  
