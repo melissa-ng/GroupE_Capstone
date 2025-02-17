@@ -211,19 +211,19 @@ dqa/
 - Oversees the implementation of the vectorization and NLP components.
 - Reviews pull requests and ensures code quality for team collaboration.
 
-#### **Karan Suresh Prajapati: Scrum Master 3**
-- Focuses on coordinating with team members to complete key deliverables.
-- Manages task allocation and updates the task board to reflect team progress.
-- Provides guidance on integrating AI models with the project pipeline.
-- Assists in troubleshooting and debugging issues encountered during development.
-- Leads efforts on ensuring data privacy and compliance with the confidentiality agreement.
-
-#### **Melissa Ng: Scrum Master 4**
+#### **Melissa Ng: Scrum Master 3**
 - Oversees development and testing of transcript parsing and analysis features.
 - Ensures unit tests are written and validated for parsing and vectorization scripts.
 - Manages integration of OpenAI and RAG components into the workflow.
 - Documents technical processes for parsing, vectorization, and protocol adherence analysis.
 - Tracks the progress of GitHub branches, pull requests, and overall repository organization.
+
+#### **Karan Suresh Prajapati: Scrum Master 4**
+- Focuses on coordinating with team members to complete key deliverables.
+- Manages task allocation and updates the task board to reflect team progress.
+- Provides guidance on integrating AI models with the project pipeline.
+- Assists in troubleshooting and debugging issues encountered during development.
+- Leads efforts on ensuring data privacy and compliance with the confidentiality agreement.
 
 #### **Samuel Imose: Scrum Master 1**
 - Facilitates retrospective meetings to evaluate sprint outcomes.
