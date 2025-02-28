@@ -4,6 +4,7 @@ const TranscriptSection = ({ transcriptData = [], isLoading = false }) => {
   const transcriptRef = useRef(null);
   const [isScrollable, setIsScrollable] = useState(false);
 
+
   useEffect(() => {
     // Check if transcript content exceeds container height
     const checkScrollable = () => {
