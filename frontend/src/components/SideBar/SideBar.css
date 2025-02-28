@@ -1,24 +1,41 @@
-/* Sidebar.css */
 .sidebar {
-    width: 220px;
-    height: calc(100vh - 80px); /* Full height minus navbar */
-    position: fixed;
-    left: 0;
-    top: 80px; /* Starts below the navbar */
+    width: 250px;
+    height: calc(100vh - 60px);
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    margin: 20px 10px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    overflow-y: auto;
 }
 
-.sidebar a {
-    color: white;
+.sidebar h2 {
+    font-size: 1.5rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.sidebar ul li a {
+    color: #7954ff;
     text-decoration: none;
-    font-size: 16px;
-    padding: 10px;
-    display: block;
+    transition: 0.3s;
 }
 
-.sidebar a {
-    background-color: #c8c8c8;
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.session-list {
+    color: #7954ff;
 }

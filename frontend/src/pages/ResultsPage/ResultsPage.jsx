@@ -1,15 +1,24 @@
-import { useLocation } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
+import TranscriptSection from "../../components/TranscriptDisplaySectionComponent";
+import SummarySection from "../../components/SummaryDisplaySectionComponent";
+import AdditionalDetailsSection from "../../components/AdditionalDetailSectionComponent";
 
-function ResultsPage() {
-  const location = useLocation();
-  const fileName = location.state?.fileName || "Unknown file";
+export default function ResultsPage({ sessions }) {
+  const { sessionId } = useParams();
+
+  // Find the selected session data
+  const session = sessions.find((s) => s.session === sessionId);
+
+  if (!session) {
+    return <h2>Session not found</h2>;
+  }
 
   return (
-    <div className="p-6 bg-white shadow-lg rounded-lg w-full max-w-lg text-center">
-      <h1 className="text-2xl font-bold mb-4">Processing Complete</h1>
-      <p className="text-sm text-gray-600">Your transcript <strong>{fileName}</strong> has been uploaded and is being analyzed.</p>
+    <div className="results-container">
+      <TranscriptSection />
+      <SummarySection />
+      <AdditionalDetailsSection />
     </div>
   );
 }
-
-export default ResultsPage;
