@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "./ui/Button";
-import { Progress } from "./ui/Progress";
+import { Button } from "../../components/ui/Button";
+import { Progress } from "../../components/ui/Progress";
 import { UploadCloud } from "lucide-react";
 import { useDropzone } from "react-dropzone";
+import "./TranscriptUploadPage.css";
 
 export default function TranscriptUpload() {
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -43,27 +44,22 @@ export default function TranscriptUpload() {
   });
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md flex flex-col justify-center items-center text-center p-6 bg-white border rounded-lg shadow-lg">
-        <h1 className="text-2xl font-semibold mb-4 w-full text-center">Upload GEMS Call Transcript</h1>
-        <div
-          {...getRootProps()}
-          className="w-full p-6 border-2 border-dashed rounded-lg text-center cursor-pointer bg-gray-50 hover:bg-gray-100 transition"
-        >
+    <div className="transcript-upload-container">
+      <div className="upload-box">
+        <h1 className="upload-title">Upload Call Transcript</h1>
+        <div {...getRootProps()} className="upload-area">
           <input {...getInputProps()} />
-          <UploadCloud className="mx-auto mb-2 text-gray-600" size={40} />
-          <p className="text-sm text-gray-700 text-center">
-            Drag and drop a transcript file here, or click to select a file
-          </p>
+          <UploadCloud className="upload-icon" size={40} />
+          <p className="upload-text">Drag and drop a transcript file here, or click to select a file</p>
         </div>
-        <p className="text-sm text-gray-500 mt-2 text-center">Supported formats: .txt, .pdf</p>
-        {file && <p className="mt-2 text-sm text-green-600 text-center">Uploading: {file.name}</p>}
-        {uploadProgress > 0 && <Progress value={uploadProgress} className="mt-2" />}
-        {errorMessage && <p className="text-sm text-red-600 mt-2 text-center">{errorMessage}</p>}
-        <Button className="mt-4 w-full text-center" onClick={() => document.querySelector('input[type=file]').click()}>
+        <p className="upload-formats">Supported formats: .txt, .pdf</p>
+        {file && <p className="upload-success">Uploading: {file.name}</p>}
+        {uploadProgress > 0 && <Progress value={uploadProgress} className="upload-progress" />}
+        {errorMessage && <p className="upload-error">{errorMessage}</p>}
+        <Button className="upload-button" onClick={() => document.querySelector('input[type=file]').click()}>
           Select File
         </Button>
       </div>
     </div>
-  ); 
+  );
 }

@@ -1,20 +1,31 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TranscriptUpload from "./components/TranscriptUploadPage";
-import ResultsPage from "./components/ResultsPage";
+import TranscriptUpload from "./pages/TranscriptUploadPage/TranscriptUploadPage";
+import ResultsPage from "./pages/ResultsPage/ResultsPage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import "./App.css"
+// import Home from './pages/HomePage/HomePage';
+// import History from './pages/HistoryPage/HistoryPage';
+import "./App.css";
+import Sidebar from "./components/SideBar/SideBar";
 
-
-export default function App() {
+function App() {
   return (
-    <>
-      <Router>
-        <NavigationBar />
-          <Routes>
-            <Route path="/" element={<TranscriptUpload />} />
-            <Route path="/results" element={<ResultsPage />} />
-          </Routes>
-      </Router>
-    </>
+    <Router>
+      <div className="app-container">
+        <Sidebar />
+        <div className="main-container">
+          <NavigationBar />
+          <div className="content-container">
+            <Routes>
+              {/* <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/history" element={<History />} /> */}
+              <Route path="/" element={<TranscriptUpload />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
+
+export default App;

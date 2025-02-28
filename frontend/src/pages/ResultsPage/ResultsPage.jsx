@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-export default function ResultsPage() {
+function ResultsPage() {
   const location = useLocation();
   const fileName = location.state?.fileName || "Unknown file";
 
@@ -11,3 +11,5 @@ export default function ResultsPage() {
     </div>
   );
 }
+
+export default ResultsPage;
