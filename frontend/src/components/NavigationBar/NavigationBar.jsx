@@ -1,21 +1,28 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './NavigationBar.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './NavigationBar.css';
+import Logo from "../../assets/logo.png";
 
-function NavigationBar({
-    isSignedIn,
-    setIsSignedIn
-}) {
-    return(
-        <div className='nav-container'>
-            <div className={`navBarProfile ${isOpen ? 'expanded' : ''}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+function NavigationBar() {
+    return (
+        <div className='nav-bar'>
+            <div className='nav-title'>
+                <div className='navBarLogo'>
+                    <img src={Logo} alt='Norman Police Department Logo' />
+                </div>
+                <Link to="/">CommsCheck</Link>
             </div>
-            <div className='navBarLogo'>
-                <img src={Logo} alt='Norman Police Department Logo'/>
+            <div className='nav-links'>
+                <Link to="/">Home</Link>
+                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/history">History</Link>
+                <div className='sign-in-button'>
+                    Sign In
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default NavigationBar; 
+export default NavigationBar;
