@@ -32,8 +32,9 @@
     transition: 0.3s;
 }
 
-.sidebar ul li a:hover {
-    text-decoration: underline;
+.sidebar ul li:hover {
+    background-color: #e4e4e4;
+    transform: scale(1.03);
 }
 
 .session-list {
