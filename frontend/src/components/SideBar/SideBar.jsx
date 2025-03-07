@@ -11,9 +11,8 @@ function Sidebar({ sessions = [] }) {
                 <ul className="session-list">
                     {sessions.map((session, index) => (
                     <li key={index}>
-                        Session #
                         {/* Link to the results page for this session */}
-                        <Link to={`/history/${session.session}`}>{session.session}</Link>
+                        <Link to={`/history/${session.session}`}>Session #{session.session}</Link>
                     </li>
                     ))}
                 </ul>
