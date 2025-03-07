@@ -6,6 +6,7 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 import History from "./pages/HistoryPage/HistoryPage";
 import "./App.css";
 import Sidebar from "./components/SideBar/SideBar";
+import SignIn from "./pages/SignInPage/SignInPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/history" element={<History />} />
               <Route path="/history/*" element={<History />} />
               <Route path="/" element={<TranscriptUpload />} />
+              <Route path="/signin" element={<SignIn />} />
             </Routes>
           </div>
         </div>
