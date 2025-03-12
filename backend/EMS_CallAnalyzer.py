@@ -4,23 +4,18 @@ from llama_index.readers.file import PandasCSVReader
 from llama_index.core.node_parser import SemanticSplitterNodeParser
 from llama_index.llms.openai import OpenAI
 from schema.models import NatureCode, NatureCodeQuestionAnalysis
-
-
-# Sentence Transformers (for local embeddings)
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import faiss
 
 class EMSCallAnalyzer:
 
-    def __init__(self, raw_transcript: str, embedding_model: str = "all-MiniLM-L6-v2"):
+    def __init__(self, embedding_model: str = "all-MiniLM-L6-v2"):
         Settings.embed_model = HuggingFaceEmbedding(model_name=embedding_model)
         # TODO: Change to local llama
         Settings.llm = OpenAI(
                 model="gpt-3.5-turbo",
-                api_key = ""
+                api_key=""
         )
-
-        self.process_call(raw_transcript)
         
 
     # Currently a short method, but may have to manually create documents
@@ -55,12 +50,12 @@ class EMSCallAnalyzer:
 
         nodes = Settings.node_parser.get_nodes_from_documents(documents)
 
-        # Vector Index
-        dimension = 384 # dimensions of all-MiniLM-L6-v2
-        faiss_index = faiss.IndexFlatL2(dimension)
+        # Vector Store Index
+        dimension = 384 # dimensions for the vectors being stored with all-MiniLM-L6-v2 (the output size of our sentence embeddings)
+        faiss_index = faiss.IndexFlatL2(dimension) # will be used to store embeddings and allow for fast similiarity search
 
-        vector_store = FaissVectorStore(faiss_index=faiss_index)
-        storage_context = StorageContext.from_defaults(vector_store=vector_store)
+        vector_store = FaissVectorStore(faiss_index=faiss_index) 
+        storage_context = StorageContext.from_defaults(vector_store=vector_store) # for storing nodes and vectors
 
         # Create index
         self.index = VectorStoreIndex(
@@ -69,59 +64,38 @@ class EMSCallAnalyzer:
             storage_context=storage_context
         )
     
-    def determine_nature_code(self, transcript):
+    def analyze_call(self, transcript):
         """
-        This is a function for determining the nature code/section based on the conversation
+        This is a function for determining:
+        - Nature code of the call
+        - Whether all required questions were asked
         """
 
         # Combine transcript into context
         #transcript_context = " ".join(
         #    transcript['operator_questions'] + transcript['caller_answers']
         #)
-        
-        # Prepare nature code determination query
-        nature_code_query = f"""
-        Based on the below emergency call transcript, 
-        determine the most appropriate Section ID/Nature Code (disregard case entry):
-        
-        Transcript: {transcript}
-        
-        Provide:
-        1. The most likely nature code
-        2. Brief explanation of your reasoning
-        3. Confidence level
-        """
-        
-        # Use query engine to determine nature code
-        query_engine = self.index.as_query_engine(
-            output_cls = NatureCode
-        )
-        response = query_engine.query(nature_code_query)
-        print(response)
-        return response
-
-    def process_call(self, raw_transcript):
 
         documents = self.data_processing()
         self.create_index(documents)
 
-        response = self.determine_nature_code(raw_transcript)
-        
         query = f"""
         Based on the below emergency call transcript,
-        determine if the Case Entry and the {response.name} Section ID/Nature Code question's were all asked:
+        determine if the Case Entry and the identified Section ID/Nature Code question's were all asked:
 
-        Transcript: {raw_transcript}
+        Transcript: {transcript}
 
         """
+
+        # executing a query against the data in the vector database
         query_engine = self.index.as_query_engine(
             output_cls = NatureCodeQuestionAnalysis
         )
         response = query_engine.query(query)
-        print(response)
-
+        return response
 
 def main():
+    
     call_transcript = """
     Caller: Hi, I’m calling because I’ve been having some really sharp pain in my stomach. It started about an hour ago, and it's been getting worse. I feel like it’s mostly in my lower abdomen, and I can barely stand up straight because of it. I’ve tried to sit down, but the pain is still there, and it’s just getting worse with time.
     Dispatcher: Okay, I understand. How severe would you say the pain is on a scale from 1 to 10, with 10 being the worst pain you’ve ever felt?
@@ -130,7 +104,7 @@ def main():
     """
     analyzer = EMSCallAnalyzer(call_transcript)
 
-    analyzer.process_call(call_transcript)
+    print(analyzer.analyze_call(call_transcript))
 
 if __name__ == "__main__":
     main()

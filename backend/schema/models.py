@@ -19,6 +19,6 @@ class Question(BaseModel):
     justification: str
 
 class NatureCodeQuestionAnalysis(BaseModel):
-    nature_code: List[NatureCode] = Field(default_factory=list, description="List of nature codes")
+    nature_code: List[NatureCode] = Field(description="List of nature codes")
     required_questions: List[Question] 
 
