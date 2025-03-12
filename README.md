@@ -9,6 +9,7 @@ The ultimate goal is to ensure that critical information is correctly collected 
 - **Python**: The primary programming language for development.  
 - **OpenAI API**: For vectorizing phrases from the dispatcher training flip book and comparing them with transcripts.  
 - **Retrieval-Augmented Generation (RAG)**: To assist in the comparison process and improve accuracy in text analysis.  
+- **React**: Front-end development of the web interface (led by Melissa and Karan).  
 - **GitHub**: Version control and collaboration.  
 - **Discord**: Task management and communication.  
 - **CJIS Training Compliance**: Ensures secure handling of sensitive call data.
@@ -77,27 +78,6 @@ The parsed transcript is returned as a dictionary:
 
 ---
 
-#### **Usage**  
-1. **Import the Function**  
-   Ensure the `parse_transcript` function is imported from the corresponding module:  
-   ```python
-   from text_parsing_module import parse_transcript
-   ```
-
-2. **Call the Function**  
-   Pass a raw transcript string to the function:  
-   ```python
-   result = parse_transcript(raw_transcript)
-   ```
-
-3. **Handle the Output**  
-   Use the structured dictionary for downstream processing:  
-   ```python
-   print(result["operator_questions"])
-   ```
-
----
-
 #### **Unit Testing**  
 To validate the parsing feature, run the unit tests:  
 1. Add the test file `test_transcript_parsing.py` to your project.  
@@ -108,23 +88,22 @@ To validate the parsing feature, run the unit tests:
 3. Ensure all test cases pass:  
    - Valid transcripts are parsed correctly.  
    - Noisy and incomplete transcripts are handled gracefully.  
-   - The parsed output structure matches the expected schema.  
-
+   - The parsed output structure matches the expected schema.
+  
 ---
 
 #### **Technologies and Tools**  
-- **Programming Language**: Python  
-- **Testing Framework**: `unittest`  
+- **Programming Language**: React, Python  
+- **Testing Framework**: unittest  
 
 ---
 
 #### **Future Enhancements**  
 1. Support for multiple languages in transcripts.  
 2. Integration with speech-to-text pipelines for real-time transcript processing.  
-3. Advanced handling of noisy data using NLP techniques.  
+3. Advanced handling of noisy data using NLP techniques.
 
 ---
-
 
 ## Group Goals and Progress Plan  
 - **January–February**:  
@@ -133,14 +112,16 @@ To validate the parsing feature, run the unit tests:
   - Set up the project environment and ensure all team members are onboarded.  
 
 - **March**:  
-  - Develop and test the vectorization pipeline using OpenAI and RAG.  
-  - Build a system to compare transcripts with expected phrases from the training flip book.  
-  - Establish collaborative workflows using Git branches and issue tracking on GroupMe.  
+  - Complete layout of front-end web pages, including:  
+    - Home/Transcript Upload Page  
+    - Dashboard Page  
+    - History Page (previous sessions and results of transcripts)  
+    - Sign-in Page using Google Authentication  
 
 - **April**:  
-  - Conduct comprehensive testing and evaluation of the analysis system.  
-  - Prepare project documentation, including user guides and technical references.  
-  - Refine and finalize the system for presentation.  
+  - Finalize the front-end implementation.  
+  - Conduct testing and refine UI components.  
+  - Ensure proper integration between front-end and back-end systems.  
 
 - **May 2nd**:  
   - Present the final product at the Capstone Expo.  
@@ -154,16 +135,17 @@ All contributors must fulfill the following requirements before working with sen
 1. Clone the repository:  
    ```bash
    git clone https://github.com/melissa-ng/GroupE_Capstone/
+   ```
 
 2. Navigate to the Project Directory  
-```bash
-cd dqa
-```  
+   ```bash
+   cd frontend
+   ```  
 
 3. Install Dependencies  
-```bash
-pip install -r requirements.txt
-```  
+   ```bash
+   npm install
+   ```  
 
 ## Usage  
 
@@ -192,7 +174,7 @@ dqa/
 ├── scripts/               # Python scripts for processing and analysis  
 ├── tests/                 # Unit and integration tests  
 └── README.md              # Project documentation  
-```  
+```
 
 ## Authors  
 #### **Gary King: Project Manager**
@@ -212,11 +194,10 @@ dqa/
 - Reviews pull requests and ensures code quality for team collaboration.
 
 #### **Melissa Ng: Scrum Master 3**
-- Oversees development and testing of transcript parsing and analysis features.
-- Ensures unit tests are written and validated for parsing and vectorization scripts.
-- Manages integration of OpenAI and RAG components into the workflow.
-- Documents technical processes for parsing, vectorization, and protocol adherence analysis.
 - Tracks the progress of GitHub branches, pull requests, and overall repository organization.
+- Creates and manages issue tickets on GitHub to track development tasks and bug fixes.
+- Develops React components and pages for the front-end interface.
+- Designs and implements the navigation structure for the front-end application.
 
 #### **Karan Suresh Prajapati: Scrum Master 4**
 - Focuses on coordinating with team members to complete key deliverables.
@@ -235,10 +216,7 @@ dqa/
 ## Acknowledgments  
 This project builds on the work of the previous semester's group. Special thanks to Bryan Tran and his team for their foundational contributions: [https://github.com/bryanltran/dqa](https://github.com/bryanltran/dqa).  
 
-## License  
-This repository is licensed under [insert license here]. See the LICENSE file for more details.  
 
 ## Contact  
 For questions or contributions, please reach out to the team via GroupMe or email.  
 
-This version will render cleanly as Markdown in your GitHub repository or any Markdown viewer. Let me know if you’d like further refinements!
