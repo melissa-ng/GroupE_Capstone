@@ -226,11 +226,10 @@ dqa/
 - Leads efforts on ensuring data privacy and compliance with the confidentiality agreement.
 
 #### **Samuel Imose: Scrum Master 1**
-- Facilitates retrospective meetings to evaluate sprint outcomes.
+- Facilitates meetings to evaluate sprint outcomes.
+- Works on the implementation of the RAG workflow.
 - Collaborates with other Scrum Masters to create sprint goals and prioritize tasks.
 - Oversees the preparation and presentation for the Capstone Expo.
-- Leads efforts in ensuring code compliance with project requirements and standards.
-- Manages the creation and maintenance of testing frameworks for all components.
 
 ## Acknowledgments  
 This project builds on the work of the previous semester's group. Special thanks to Bryan Tran and his team for their foundational contributions: [https://github.com/bryanltran/dqa](https://github.com/bryanltran/dqa).  
