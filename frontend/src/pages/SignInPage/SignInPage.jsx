@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignInPage.css";
+import GoogleAuth from './GoogleAuth'; // Adjust the path based on the file structure
+
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -56,6 +58,7 @@ export default function SignIn() {
         <p className="signup-text">
           Don't have an account? <a href="/signup">Sign Up</a>
         </p>
+        <GoogleAuth></GoogleAuth>
       </div>
     </div>
   );
