@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignInPage.css";
-import GoogleAuth from './GoogleAuth'; // Adjust the path based on the file structure
+import GoogleAuth from './GoogleAuth.jsx'; // Adjust the path based on the file structure
 
 
 export default function SignIn() {
