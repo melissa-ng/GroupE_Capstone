@@ -24,8 +24,6 @@ class EMSCallAnalyzer:
         else:
             self.index = None
 
-    #def parse_transcript(self):
-
 
     # Currently a short method, but may have to manually create documents
     # and assign metadata based on the rows nature code/section in the csv
@@ -50,12 +48,9 @@ class EMSCallAnalyzer:
 
     def create_index(self, documents):
         """ Process and index documents using FAISS """
-        # Chunking (Needs to be tested)
+        # Chunking
         ## Used for retrieving more precise information instead of scanning entire documents
         ## and decreases the size of relevant chunks for the similarity search
-        ## https://stackoverflow.blog/2024/12/27/breaking-up-is-hard-to-do-chunking-in-rag-applications/
-        ## Currently using SemanticSplitter which should keep related questions together
-        ## TODO: Use ingestion pipeline for creating nodes, instead of just this
         Settings.node_parser = SemanticSplitterNodeParser(
             buffer_size=0,
             breakpoint_percentile_threshold=89,
@@ -83,6 +78,7 @@ class EMSCallAnalyzer:
 
     def analyze_call(self, transcript):
         """ Analyze emergency call transcript """
+        """ Expecting transcript to be a dictionary """
         if self.index is None:
             documents = self.data_processing()
             self.create_index(documents)
@@ -116,20 +112,3 @@ class EMSCallAnalyzer:
          #   print("The response is not in JSON format.")
 
         return response
-    
-
-def main():
-    
-    call_transcript = """
-    Caller: Hi, I’m calling because I’ve been having some really sharp pain in my stomach. It started about an hour ago, and it's been getting worse. I feel like it’s mostly in my lower abdomen, and I can barely stand up straight because of it. I’ve tried to sit down, but the pain is still there, and it’s just getting worse with time.
-    Dispatcher: Okay, I understand. How severe would you say the pain is on a scale from 1 to 10, with 10 being the worst pain you’ve ever felt?
-    Caller: I’d say it’s about a 7 or 8 right now. It feels really intense, and I can’t move around much without feeling like it's getting worse. I'm at the Walmart off 63rd.
-    Dispatcher: Alright, thank you for letting me know. I’m sending help your way right now. Stay calm, and we’ll get you the assistance you need.
-    """
-    analyzer = EMSCallAnalyzer()
-
-    print(analyzer.analyze_call(call_transcript))
-
-if __name__ == "__main__":
-    main()
-        
