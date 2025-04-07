@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import "./SignInPage.css";
+import GoogleAuth from './GoogleAuth.jsx'; // Adjust the path based on the file structure
+
 
 const clientId = "38776683044-jfiipcpm08vs13u62o8mr046amjqeg4a.apps.googleusercontent.com";
 
