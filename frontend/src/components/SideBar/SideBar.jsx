@@ -8,6 +8,7 @@ function Sidebar({ sessions = [] }) {
             {sessions.length > 0 && (
                 <>
                 <h3>Sessions</h3>
+                {/* Loop through session and display in sidebar */}
                 <ul className="session-list">
                     {sessions.map((session, index) => (
                     <li key={index}>

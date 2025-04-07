@@ -70,3 +70,7 @@
 .sign-in-button:hover {
     background-color: #5d41c4;
 }
+
+.active {
+    text-decoration: underline;
+}

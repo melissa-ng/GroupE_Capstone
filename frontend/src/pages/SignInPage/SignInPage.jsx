@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import "./SignInPage.css";
+
+const clientId = "38776683044-jfiipcpm08vs13u62o8mr046amjqeg4a.apps.googleusercontent.com";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -8,15 +11,29 @@ export default function SignIn() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // Dummy email/password login handler
   const handleSignIn = (e) => {
     e.preventDefault();
-
-    // Mock authentication (replace with real authentication logic)
     if (email === "user@example.com" && password === "password") {
-      navigate("/dashboard"); // Redirect to dashboard on success
+      navigate("/dashboard");
     } else {
       setError("Invalid email or password.");
     }
+  };
+
+  // Handle Google login success
+  const handleGoogleSuccess = (credentialResponse) => {
+    const jwtToken = credentialResponse.credential;
+    const userData = JSON.parse(atob(jwtToken.split(".")[1]));
+
+    // Save user and navigate
+    localStorage.setItem("googleUser", JSON.stringify(userData));
+    navigate("/dashboard");
+  };
+
+  // Handle Google login failure
+  const handleGoogleFailure = () => {
+    setError("Google login failed. Please try again.");
   };
 
   return (
@@ -24,6 +41,7 @@ export default function SignIn() {
       <div className="signin-box">
         <h1>Sign In</h1>
         {error && <p className="error-message">{error}</p>}
+
         <form onSubmit={handleSignIn}>
           <div className="input-group">
             <label>Email</label>
@@ -53,6 +71,18 @@ export default function SignIn() {
           </div>
           <button type="submit" className="signin-button">Sign In</button>
         </form>
+
+
+        {/* Google OAuth Login */}
+        <GoogleOAuthProvider clientId={clientId}>
+          <div className="google-login-wrapper">
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleFailure}
+            />
+          </div>
+        </GoogleOAuthProvider>
+
         <p className="signup-text">
           Don't have an account? <a href="/signup">Sign Up</a>
         </p>

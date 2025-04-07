@@ -14,6 +14,7 @@ export default function ResultsPage({ sessions }) {
     return <h2>Session not found</h2>;
   }
 
+  // Return all components for the results page
   return (
     <div className="results-container">
       <TranscriptSection />
