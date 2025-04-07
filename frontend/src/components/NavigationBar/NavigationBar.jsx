@@ -8,9 +8,10 @@ function NavigationBar() {
     const location = useLocation();
     const navigate = useNavigate();
     
-    // Mock authentication (Replace with real authentication logic)
+    // Dummy authentication
     const isAuthenticated = localStorage.getItem("userToken"); 
 
+    // Dummy authentication function to be replaced by google auth
     const handleAuth = () => {
         if (isAuthenticated) {
             localStorage.removeItem("userToken"); // Log out user
@@ -33,7 +34,7 @@ function NavigationBar() {
             {/* Navigation Links */}
             <div className="nav-links">
                 <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
-                <Link to="/dashboard" className={location.pathname === "/dashboard" ? "active" : ""}>Dashboard</Link>
+                <Link to="/dispatchers" className={location.pathname === "/dispatchers" ? "active" : ""}>Dispatchers</Link>
                 <Link to="/history" className={location.pathname === "/history" ? "active" : ""}>History</Link>
 
                 {/* Sign In / Sign Out Button */}
