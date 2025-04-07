@@ -12,6 +12,7 @@ export default function TranscriptUpload() {
   const [file, setFile] = useState(null);
   const navigate = useNavigate(); // Hook for navigation
 
+  // Function to handle file upload of only allowed types and simulate upload progress
   const handleFileUpload = (selectedFile) => {
     if (!selectedFile) return;
 
@@ -38,6 +39,7 @@ export default function TranscriptUpload() {
     }, 500);
   };
 
+  // Hook for handling file drop
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "text/plain": [".txt"], "application/pdf": [".pdf"] },
     onDrop: (acceptedFiles) => handleFileUpload(acceptedFiles[0]),

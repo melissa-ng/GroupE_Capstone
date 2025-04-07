@@ -7,6 +7,7 @@ import History from "./pages/HistoryPage/HistoryPage";
 import "./App.css";
 import Sidebar from "./components/SideBar/SideBar";
 import SignIn from "./pages/SignInPage/SignInPage";
+import DispatchersPage from "./pages/DispatchersPage/DispatchersPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} /> */}
               <Route path="/history" element={<History />} />
               <Route path="/history/*" element={<History />} />
+              <Route path="/dispatchers" element={<DispatchersPage />} />
               <Route path="/" element={<TranscriptUpload />} />
               <Route path="/signin" element={<SignIn />} />
             </Routes>

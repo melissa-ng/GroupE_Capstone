@@ -9,6 +9,7 @@
   flex-grow: 1;
   width: 100vw;
   flex-direction: row;
+  gap: 10px;
 }
 
 .content-container {
