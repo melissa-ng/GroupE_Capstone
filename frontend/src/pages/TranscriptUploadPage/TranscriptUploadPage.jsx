@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../components/ui/Button";
-import { Progress } from "../../components/ui/Progress";
 import { UploadCloud } from "lucide-react";
 import { useDropzone } from "react-dropzone";
 import "./TranscriptUploadPage.css";
@@ -56,11 +54,10 @@ export default function TranscriptUpload() {
         </div>
         <p className="upload-formats">Supported formats: .txt, .pdf</p>
         {file && <p className="upload-success">Uploading: {file.name}</p>}
-        {uploadProgress > 0 && <Progress value={uploadProgress} className="upload-progress" />}
         {errorMessage && <p className="upload-error">{errorMessage}</p>}
-        <Button className="upload-button" onClick={() => document.querySelector('input[type=file]').click()}>
+        <button className="upload-button" onClick={() => document.querySelector('input[type=file]').click()}>
           Select File
-        </Button>
+        </button>
       </div>
     </div>
   );
