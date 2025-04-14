@@ -6,7 +6,7 @@ This project focuses on analyzing transcripts of emergency medical calls for ser
 The ultimate goal is to ensure that critical information is correctly collected during emergency calls and effectively communicated to the appropriate parties, enhancing emergency response efficiency and accuracy.  
 
 ## Identified Technologies and Tools  
-- **Python**: The primary programming language for development.  
+- **Python (3.11.5)**: The primary programming language for development.  
 - **OpenAI API**: For vectorizing phrases from the dispatcher training flip book and comparing them with transcripts.  
 - **Retrieval-Augmented Generation (RAG)**: To assist in the comparison process and improve accuracy in text analysis.  
 - **React**: Front-end development of the web interface (led by Melissa and Karan).  
