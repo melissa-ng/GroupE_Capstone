@@ -73,7 +73,7 @@ This a Python-based backend application designed for analyzing dispatcher-caller
 
 ### Overview
 
-This is a React-based frontend application designed for analyzing dispatcher-caller conversations. The app provides a user-friendly interface to upload transcripts, view results and result history, view distacher profiles, and manage user authentication The dispatcher profile page is purely frontend with no real functionality with a database since NPD was still unsure of how dispather identification would look like/be entered into the system. User authentication also has dummy functionality for demo purposes. 
+This is a React-based frontend application designed for analyzing dispatcher-caller conversations. The app provides a user-friendly interface to upload transcripts, view results and result history, view distacher profiles, and manage user authentication The dispatcher profile page is purely frontend with no real functionality with a database since NPD was still unsure of how dispatcher identification would look like/be entered into the system. User authentication also has dummy functionality for demo purposes. 
 
 ---
 
