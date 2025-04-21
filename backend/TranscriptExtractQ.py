@@ -1,5 +1,3 @@
-# Kaylee Nguyen
-# STILL TESTING
 # Extract Questions Asked in the Transcript for comparison and analysis to the flipbook
 # Components Needed: Questions asked, Questions not asked, Timestamps, Dispatcher Name, Caller Name
 

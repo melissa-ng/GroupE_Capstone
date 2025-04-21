@@ -8,7 +8,7 @@ The ultimate goal is to ensure that critical information is correctly collected 
 
 ## Identified Technologies and Tools
 
-- **Python**: The primary programming language for development.
+- **Python (v3.13.2)**: The primary programming language for development.
 - **OpenAI API**: For vectorizing phrases from the dispatcher training flip book and comparing them with transcripts.
 - **Retrieval-Augmented Generation (RAG)**: To assist in the comparison process and improve accuracy in text analysis.
 - **GitHub**: Version control and collaboration.

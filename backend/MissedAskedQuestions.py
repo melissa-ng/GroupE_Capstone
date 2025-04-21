@@ -1,5 +1,3 @@
-# Kaylee Nguyen
-# STILL TESTING
 # Backend API to Retrieve Missed and Asked Questions
 
 from flask import Flask, jsonify, request
