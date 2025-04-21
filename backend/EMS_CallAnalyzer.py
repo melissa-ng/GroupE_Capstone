@@ -7,10 +7,8 @@ from schema.models import NatureCodeQuestionAnalysis
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import faiss
 import os
-import json
-
 class EMSCallAnalyzer:
-    def __init__(self, embedding_model: str = "all-MiniLM-L6-v2", persist_dir: str = "./data/db_indexing"):
+    def __init__(self, embedding_model: str = "all-MiniLM-L6-v2", llm: str = "meta-llama/Llama-3.1-8B", persist_dir: str = "./data/db_indexing"):
         self.persist_dir = persist_dir
         Settings.embed_model = HuggingFaceEmbedding(model_name=embedding_model)
         Settings.llm = OpenAI(
@@ -69,7 +67,6 @@ class EMSCallAnalyzer:
         self.index = VectorStoreIndex(
             nodes,
             storage_context=storage_context
-            #service_context=self.service_context
         )
 
         # Persist FAISS index
@@ -83,11 +80,6 @@ class EMSCallAnalyzer:
             documents = self.data_processing()
             self.create_index(documents)
             self.index = self.load_existing_index()
-        
-        # Combine transcript into context
-        #transcript_context = " ".join(
-        #    transcript['operator_questions'] + transcript['caller_answers']
-        #)
 
         query = f"""
         Based on the below emergency call transcript,
