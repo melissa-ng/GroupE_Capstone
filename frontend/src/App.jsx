@@ -27,6 +27,7 @@ function App() {
               <Route path="/" element={<TranscriptUpload />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/results" element={<ResultsPage />} />
             </Routes>
           </div>
         </div>
