@@ -16,12 +16,12 @@ export default function TranscriptUpload() {
   const handleFileUpload = (selectedFile) => {
     if (!selectedFile) return;
 
-    const allowedTypes = ["text/plain", "application/pdf", "application/json"];
+    const allowedTypes = ["application/json"];
     if (!allowedTypes.includes(selectedFile.type)) {
-      setErrorMessage("Unsupported file type. Please upload a .txt, .pdf, or .json file.");
+      setErrorMessage("Unsupported file type. Please upload a .json file.");
       return;
     }
-    console.log(selectedFile.type)
+    //console.log(selectedFile.type)
     setErrorMessage("");
     setFile(selectedFile);
     setUploadProgress(0);
@@ -50,11 +50,11 @@ export default function TranscriptUpload() {
         },
       });
 
-      console.log("API Response:", response.data);
+      //console.log("API Response:", response.data);
       setIsUploadingToApi(false);
               
       // Navigate to results page after completion
-      navigate("/results", { state: { data: response.data, fileName: fileToSend.name } });
+      navigate("/results", { state: response.data });
     } catch (error) {
       console.error("API Error:", error);
       setIsUploadingToApi(false);
@@ -64,7 +64,7 @@ export default function TranscriptUpload() {
 
   // Hook for handling file drop
   const { getRootProps, getInputProps } = useDropzone({
-    accept: { "text/plain": [".txt"], "application/pdf": [".pdf"], "application/json": [".json"] },
+    accept: { "application/json": [".json"] },
     onDrop: (acceptedFiles) => handleFileUpload(acceptedFiles[0]),
   });
 
@@ -77,7 +77,7 @@ export default function TranscriptUpload() {
           <UploadCloud className="upload-icon" size={40} />
           <p className="upload-text">Drag and drop a transcript file here, or click to select a file</p>
         </div>
-        <p className="upload-formats">Supported formats: .txt, .pdf, .json</p>
+        <p className="upload-formats">Supported formats: .json</p>
         {file && !isUploadingToApi && <p className="upload-success">Selected: {file.name}</p>}
         {file && isUploadingToApi && <p className="upload-progress">Uploading: {file.name}...</p>}
         {errorMessage && <p className="upload-error">{errorMessage}</p>}

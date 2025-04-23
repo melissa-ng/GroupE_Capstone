@@ -1,40 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+import styles from "./SummaryDisplaySectionComponent.module.css";
 
-const SummarySection = ({ questions = [], completenessScore = 0 }) => {
-  // Sort questions by status to group asked and missed questions
-  const sortedQuestions = [...questions].sort((a, b) => {
-    if (a.asked === b.asked) return 0;
-    return a.asked ? -1 : 1;
-  });
+const SummarySection = ({ natureCode, requiredQuestions }) => {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  const missedQuestions = requiredQuestions ? requiredQuestions.filter(q => !q.was_asked) : [];
+  const totalRequired = requiredQuestions ? requiredQuestions.length : 0;
+  const numAsked = totalRequired - missedQuestions.length;
+  const completenessPercentage = totalRequired > 0 ? Math.round((numAsked / totalRequired) * 100) : 0;
+
+  useEffect(() => {
+    if (inView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [inView, hasAnimated]);
 
   return (
-    <div className="p-4">
-      <h2 className="text-lg font-bold text-[#4a4a4a] mb-4">Summary</h2>
-      
-      <div className="mb-4">
-        <h3 className="text-[#4a4a4a] font-medium mb-2">Required Questions:</h3>
-        <ul className="space-y-3">
-          {sortedQuestions.map((question, index) => (
-            <li key={index} className="flex items-center">
-              <span 
-                className={`inline-block w-3 h-3 rounded-full mr-3 ${
-                  question.asked ? 'bg-[#4ade80]' : 'bg-[#f87171]'
-                }`}
-              ></span>
-              <span className="text-sm text-[#4a4a4a]">
-                Question {index + 1}: {question.text}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      <div className="bg-[#f5f5ff] rounded-md p-3 mt-4">
-        <h3 className="text-[#4a4a4a] font-bold text-sm">Completeness Score:</h3>
-        <div className="flex justify-end mt-2">
-          <span className="text-xl font-bold text-[#7b68ee]">{completenessScore}%</span>
+    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 className="text-xl font-semibold text-indigo-700 mb-5 border-b-2 border-indigo-300 pb-2">
+        <span role="img" aria-label="clipboard">📋</span> Call Summary
+      </h2>
+
+      {natureCode && natureCode.length > 0 && (
+        <div className="mb-5">
+          <h3 className="text-lg font-medium text-gray-700 mb-3">
+            <span role="img" aria-label="label">🏷️</span> Identified Nature Codes/Sections:
+          </h3>
+          <ul className="list-disc pl-6 space-y-2">
+            {natureCode.map((code, index) => (
+              <li key={index} className="text-gray-600">
+                <span className="font-semibold text-indigo-600">{code.name}:</span>{' '}
+                <span className="text-sm italic">{code.explanation}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      )}
+
+      {missedQuestions.length > 0 && (
+        <div className="mb-5">
+          <h3 className="text-lg font-medium text-red-700 mb-3">
+            <span role="img" aria-label="warning">⚠️</span> Missed Questions:
+          </h3>
+          <ul className="space-y-3">
+            {missedQuestions.map((question, index) => (
+              <li key={index} className="flex items-center text-gray-600">
+                <span className="inline-block w-4 h-4 rounded-full mr-3 bg-red-500 shadow"></span>
+                <span className="text-sm">
+                  {index + 1}. {question.text}
+                  {question.justification && (
+                    <span className="ml-2 text-xs italic text-gray-500">({question.justification})</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {totalRequired > 0 && (
+        <div ref={ref} className="mt-6">
+          <h3 className="text-md font-semibold text-indigo-700 mb-3 text-center">
+            <span role="img" aria-label="check-mark">✅</span> Call Completeness:
+          </h3>
+          <div className="flex flex-col items-center">
+            <div className={styles.progressBarContainer}>
+              <div
+                className={styles.progressBarFill}
+                style={{ width: hasAnimated ? `${completenessPercentage}%` : '0%' }}
+              >
+                {completenessPercentage}%
+              </div>
+              <div className={styles.progressBarTooltip}>
+                <span className={styles.tooltipText}>
+                  {numAsked} of {totalRequired} questions answered
+                </span>
+              </div>
+            </div>
+            <p className="mt-2 text-sm text-gray-600 text-center">
+              {completenessPercentage === 100 ? (
+                <span className="text-green-500 font-bold">All required questions were asked.</span>
+              ) : (
+                <span className="text-orange-500 font-bold">Some questions were missed.</span>
+              )}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
